@@ -75,6 +75,16 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="images\flower.png" />
+    <Content Include="images\intro_background.png" />
+    <Content Include="images\intro_flower.png" />
+    <Content Include="images\intro_shauli.png" />
+    <Content Include="images\nav_background.png" />
+    <Content Include="images\rss.png" />
+    <Content Include="images\sidebar_background.png" />
+    <Content Include="images\sidebar_section_background.png" />
+    <Content Include="index.html" />
+    <Content Include="style.css" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
