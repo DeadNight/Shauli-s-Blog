@@ -47,7 +47,7 @@ nav {
 	position: absolute;
 	left: 0;
 	width: 100%;
-	background: url("images/nav_background.png");
+	background: linear-gradient(to bottom, #333333, #222222);
 }
 
 	nav ul {
@@ -95,13 +95,7 @@ nav {
 	position: relative;
 	margin-top: 66px;
 	padding: 44px;
-	background: #467612 url("images/intro_background.png") repeat-x;
-	
-	/* Background-size not implemented yet */
-	-webkit-background-size: 100%;
-	-o-background-size: 100%;
-	-khtml-background-size: 100%;
-
+    background: linear-gradient(to bottom, #B4DD10 10px, #467612 calc(100% - 10px));
 	
 	/* Border-radius not implemented yet */
 	-moz-border-radius: 22px;
@@ -137,6 +131,45 @@ nav {
 		-webkit-border-radius: 22px;
 	}
 
+/*------------------------------
+=CONTENT AREA AND SIDEBAR LAYOUT
+------------------------------*/
+
+#filter {
+    margin-top: 10px;
+    padding: 5px;
+    background: #d7d7d7;
+    border-radius: 11px;
+}
+
+#filter form {
+    padding: 0;
+    margin: 0;
+    display: table;
+}
+
+#filter div {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+#filter span {
+    white-space: nowrap;
+}
+
+#filter label,
+#filter input {
+    display: inline;
+    padding: 0;
+    margin-right: 5px;
+    font-size: 12px;
+    font-weight: normal;
+    vertical-align: middle;
+}
+
+#filter input[type="submit"] {
+    padding: 0 3px;
+}
 
 /*------------------------------
 =CONTENT AREA AND SIDEBAR LAYOUT
@@ -165,7 +198,7 @@ nav {
 aside section {
 	margin: 22px 0 0 22px;
 	padding: 11px 22px;
-	background: url("images/sidebar_section_background.png") repeat-x;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.13), rgba(240, 240, 240, 0.13));
 	
 	/* Border-radius not implemented yet */
 	-moz-border-radius: 11px;

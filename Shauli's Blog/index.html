@@ -5,6 +5,8 @@
     <link rel="stylesheet" href="style.css" type="text/css" media="screen" />
 </head>
 <body>
+    <!-- Submitter: Nir Leibovitch 200315232 -->
+
 	<header>
 		<h1>Ha-Blog Shel Shauli</h1>
 	</header>
@@ -27,6 +29,39 @@
 		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut.</p>
         <img src="images/intro_shauli.png" alt="Shauli" />
 	</section>
+    <section id="filter">
+        <form action="#" method="post">
+            <div>
+                <span>
+                    <label for="from">From</label>
+                    <input type="date" name="from" id="from" />
+                </span>
+
+                <span>
+                    <label for="until">Until</label>
+                    <input type="date" name="until" id="until" />
+                </span>
+
+                <span>
+                    <label for="author">Author</label>
+                    <input type="text" name="author" id="author" />
+                </span>
+
+                <span>
+                    <label for="contains">Containing</label>
+                    <input type="text" name="contains" id="contains" />
+                </span>
+
+                <span>
+                    <label for="minComments">Min. Comments</label>
+                    <input type="range" min="1" max="10" value="1" />
+                </span>
+            </div>
+            <div>
+                <input type="submit" value="Filter" />
+            </div>
+        </form>
+</section>
 	<div id="content">
 		<div id="mainContent">
 			<section>
