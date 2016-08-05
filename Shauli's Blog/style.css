@@ -13,11 +13,16 @@ header, footer, section, aside, nav, article {
 	display: block;
 }
 
+@font-face {
+   font-family: externalFont;
+   src: url(fonts/sansation_light.woff);
+}
+
 body {
 	margin: 0 auto;
 	padding: 22px 0;
 	width: 940px;
-	font: 13px/22px Helvetica, Arial, sans-serif;
+	font: 13px/22px externalFont, Helvetica, Arial, sans-serif;
 	background: #F0F0F0;
 }
 
@@ -35,6 +40,14 @@ h3 {
 
 p {
 	padding-bottom: 22px;
+}
+
+audio {
+    float: right;
+}
+
+h1 {
+    text-shadow: 3px 3px #ddd;
 }
 
 
@@ -80,11 +93,22 @@ nav {
 			}
 			
 			nav ul li.subscribe a {
-				margin-left: 22px;
-				padding-left: 33px;
+                width: auto;
 				text-align: left;
-				background: url("images/rss.png") left center no-repeat;
 			}
+
+            nav ul li.subscribe img {
+                width: 22px;
+                height: 22px;
+                margin-right: 11px;
+                vertical-align: middle;
+                transition: all 2s ease-in-out;
+            }
+
+            nav ul li.subscribe img:hover {
+                background: none;
+                transform: rotate(720deg) scale(2,2);
+            }
 
 
 /*------------------------------
@@ -132,13 +156,13 @@ nav {
 	}
 
 /*------------------------------
-=CONTENT AREA AND SIDEBAR LAYOUT
+=FILTER
 ------------------------------*/
 
 #filter {
     margin-top: 10px;
     padding: 5px;
-    background: #d7d7d7;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.05), rgba(240, 240, 240, 0.05));
     border-radius: 11px;
 }
 
