@@ -80,7 +80,6 @@
     <Content Include="images\intro_shauli.png" />
     <Content Include="images\rss.png" />
     <Content Include="images\sidebar_background.png" />
-    <Content Include="images\sidebar_section_background.png" />
     <Content Include="index.html" />
     <Content Include="style.css" />
     <Content Include="Web.config" />
