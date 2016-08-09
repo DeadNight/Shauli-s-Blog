@@ -66,6 +66,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="audio\דדי דדון - זכית בי.mp3" />
     <Content Include="packages.config" />
     <Content Include="fonts\sansation_light.woff" />
     <None Include="Web.Debug.config">
