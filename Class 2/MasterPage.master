@@ -1,0 +1,49 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <style type="text/css">
+        .auto-style1 {
+            width: 100%;
+            height: 100%;
+        }
+        .auto-style2 {
+            width: 128px;
+            height: 128px;
+        }
+        .auto-style3 {
+            width: 128px;
+        }
+    </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+        <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+        
+            <table class="auto-style1">
+                <tr>
+                    <td class="auto-style3">
+                        <img alt="logo" class="auto-style2" src="images/calculator.png" /></td>
+                    <td>&nbsp;</td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="text-align: center">
+                        
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="text-align: center">This website was created by Nir Leibovitch</td>
+                </tr>
+            </table>
+        
+        </asp:ContentPlaceHolder>
+    </div>
+    </form>
+</body>
+</html>
