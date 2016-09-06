@@ -9,12 +9,12 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{9FEF68B5-1544-4E51-803F-128FB0934136}</ProjectGuid>
+    <ProjectGuid>{88FF8C4B-D7F5-4F7D-83D6-ABA04ED140F6}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Milestone3</RootNamespace>
-    <AssemblyName>Milestone3</AssemblyName>
+    <RootNamespace>ContosoUniversity</RootNamespace>
+    <AssemblyName>ContosoUniversity</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
@@ -58,6 +58,14 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -129,46 +137,67 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\BlogController.cs" />
-    <Compile Include="Controllers\FansController.cs" />
+    <Compile Include="Controllers\CourseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="DAL\BlogContext.cs" />
+    <Compile Include="Controllers\InstructorController.cs" />
+    <Compile Include="Controllers\StudentController.cs" />
+    <Compile Include="DAL\SchoolConfiguration.cs" />
+    <Compile Include="DAL\SchoolContext.cs" />
+    <Compile Include="DAL\SchoolInitializer.cs" />
+    <Compile Include="DAL\SchoolInterceptorLogging.cs" />
+    <Compile Include="DAL\SchoolInterceptorTransientErrors.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201609041937231_InitialCreate.cs" />
-    <Compile Include="Migrations\201609041937231_InitialCreate.Designer.cs">
-      <DependentUpon>201609041937231_InitialCreate.cs</DependentUpon>
+    <Compile Include="Logging\ILogger.cs" />
+    <Compile Include="Logging\Logger.cs" />
+    <Compile Include="Migrations\201609041451510_InitialCreate.cs" />
+    <Compile Include="Migrations\201609041451510_InitialCreate.Designer.cs">
+      <DependentUpon>201609041451510_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201609052114236_MaxLengthOnNames.cs" />
+    <Compile Include="Migrations\201609052114236_MaxLengthOnNames.Designer.cs">
+      <DependentUpon>201609052114236_MaxLengthOnNames.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201609052118205_ColumnFirstName.cs" />
+    <Compile Include="Migrations\201609052118205_ColumnFirstName.Designer.cs">
+      <DependentUpon>201609052118205_ColumnFirstName.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201609052218342_ComplexDataModel.cs" />
+    <Compile Include="Migrations\201609052218342_ComplexDataModel.Designer.cs">
+      <DependentUpon>201609052218342_ComplexDataModel.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\Fan.cs" />
+    <Compile Include="Models\Course.cs" />
+    <Compile Include="Models\Department.cs" />
+    <Compile Include="Models\Enrollment.cs" />
+    <Compile Include="Models\Instructor.cs" />
+    <Compile Include="Models\OfficeAssignment.cs" />
+    <Compile Include="Models\Student.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\EnrollmentDateGroup.cs" />
+    <Compile Include="ViewModels\InstructorIndexData.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\ShaulisBlog.mdf" />
-    <Content Include="App_Data\ShaulisBlog_log.ldf" />
+    <Content Include="App_Data\ContosoUniversity1.mdf" />
+    <Content Include="App_Data\ContosoUniversity1_log.ldf">
+      <DependentUpon>ContosoUniversity1.mdf</DependentUpon>
+    </Content>
+    <Content Include="App_Data\ContosoUniversity2.mdf" />
+    <Content Include="App_Data\ContosoUniversity2_log.ldf">
+      <DependentUpon>ContosoUniversity2.mdf</DependentUpon>
+    </Content>
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\images\flower.png" />
-    <Content Include="Content\images\intro_flower.png" />
-    <Content Include="Content\images\intro_shauli.png" />
-    <Content Include="Content\images\rss.png" />
-    <Content Include="Content\images\sidebar_background.png" />
-    <Content Include="Content\style\base.css" />
-    <Content Include="Content\style\blog.css" />
-    <Content Include="Content\style\content-and-sidebar.css" />
-    <Content Include="Content\style\footer.css" />
-    <Content Include="Content\style\introduction.css" />
-    <Content Include="Content\style\navigation.css" />
+    <Content Include="Content\PagedList.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Content\fonts\sansation_light.woff" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -195,12 +224,21 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Blog\Index.cshtml" />
-    <Content Include="Views\Fans\Create.cshtml" />
-    <Content Include="Views\Fans\Delete.cshtml" />
-    <Content Include="Views\Fans\Details.cshtml" />
-    <Content Include="Views\Fans\Edit.cshtml" />
-    <Content Include="Views\Fans\Index.cshtml" />
+    <Content Include="Views\Student\Create.cshtml" />
+    <Content Include="Views\Student\Delete.cshtml" />
+    <Content Include="Views\Student\Details.cshtml" />
+    <Content Include="Views\Student\Edit.cshtml" />
+    <Content Include="Views\Student\Index.cshtml" />
+    <Content Include="Views\Course\Create.cshtml" />
+    <Content Include="Views\Course\Delete.cshtml" />
+    <Content Include="Views\Course\Details.cshtml" />
+    <Content Include="Views\Course\Edit.cshtml" />
+    <Content Include="Views\Course\Index.cshtml" />
+    <Content Include="Views\Instructor\Create.cshtml" />
+    <Content Include="Views\Instructor\Delete.cshtml" />
+    <Content Include="Views\Instructor\Details.cshtml" />
+    <Content Include="Views\Instructor\Edit.cshtml" />
+    <Content Include="Views\Instructor\Index.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
@@ -212,8 +250,17 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201609041937231_InitialCreate.resx">
-      <DependentUpon>201609041937231_InitialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201609041451510_InitialCreate.resx">
+      <DependentUpon>201609041451510_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201609052114236_MaxLengthOnNames.resx">
+      <DependentUpon>201609052114236_MaxLengthOnNames.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201609052118205_ColumnFirstName.resx">
+      <DependentUpon>201609052118205_ColumnFirstName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201609052218342_ComplexDataModel.resx">
+      <DependentUpon>201609052218342_ComplexDataModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
@@ -232,9 +279,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>30985</DevelopmentServerPort>
+          <DevelopmentServerPort>10500</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:30985/</IISUrl>
+          <IISUrl>http://localhost:10500/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
