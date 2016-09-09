@@ -140,9 +140,16 @@
     <Compile Include="Migrations\201609041937231_InitialCreate.Designer.cs">
       <DependentUpon>201609041937231_InitialCreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201609091556134_posts-comments.cs" />
+    <Compile Include="Migrations\201609091556134_posts-comments.Designer.cs">
+      <DependentUpon>201609091556134_posts-comments.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\Fan.cs" />
+    <Compile Include="Models\Post.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utils\IntegerExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\ShaulisBlog.mdf" />
@@ -214,6 +221,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201609041937231_InitialCreate.resx">
       <DependentUpon>201609041937231_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201609091556134_posts-comments.resx">
+      <DependentUpon>201609091556134_posts-comments.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
