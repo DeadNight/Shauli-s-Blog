@@ -23,6 +23,9 @@
         <th>
             @Html.DisplayNameFor(model => model.Instructors.FirstOrDefault().OfficeAssignment)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Instructors.FirstOrDefault().Courses)
+        </th>
         <th></th>
     </tr>
 
@@ -49,6 +52,14 @@
             }
         </td>
         <td>
+            @{ 
+                foreach(var course in item.Courses)
+                {
+                    @course.CourseID @: @course.Title <br />
+                }
+            }
+        </td>
+        <td>
             @Html.ActionLink("Select", "Index", new { id = item.ID }) |
             @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
             @Html.ActionLink("Details", "Details", new { id=item.ID }) |
@@ -58,3 +69,62 @@
 }
 
 </table>
+
+@if(Model.Courses != null)
+{
+    <h3>Courses Taught by Selected Instructor</h3>
+    <table class="table">
+        <tr>
+            <th></th>
+            <th>@Html.DisplayNameFor(model => model.Courses.FirstOrDefault().CourseID)</th>
+            <th>@Html.DisplayNameFor(model => model.Courses.FirstOrDefault().Title)</th>
+            <th>@Html.DisplayNameFor(model => model.Courses.FirstOrDefault().Department)</th>
+        </tr>
+        @foreach(var item in Model.Courses)
+        {
+            string selectedRow = "";
+            if(item.CourseID == ViewBag.CourseID)
+            {
+                selectedRow = "success";
+            }
+            <tr class="@selectedRow">
+                <td>
+                    @Html.ActionLink("Select", "Index", new { courseId = item.CourseID })
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CourseID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Department.Name)
+                </td>
+            </tr>
+        }
+    </table>
+}
+
+@if(Model.Enrollments != null)
+{
+    <h3>
+        Students Enrolled in Selected Course
+    </h3>
+    <table class="table">
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.Enrollments.FirstOrDefault().Student.FullName)</th>
+            <th>@Html.DisplayNameFor(model => model.Enrollments.FirstOrDefault().Grade)</th>
+        </tr>
+        @foreach(var item in Model.Enrollments)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Student.FullName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Grade)
+                </td>
+            </tr>
+        }
+    </table>
+}
