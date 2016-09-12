@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Milestone2", "Milestone2\Mi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Milestone3", "Milestone3\Milestone3.csproj", "{9FEF68B5-1544-4E51-803F-128FB0934136}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Milestone4", "Milestone4\Milestone4.csproj", "{5B19BF1C-B687-47A2-A3B1-CD19A77DF997}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{9FEF68B5-1544-4E51-803F-128FB0934136}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9FEF68B5-1544-4E51-803F-128FB0934136}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9FEF68B5-1544-4E51-803F-128FB0934136}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5B19BF1C-B687-47A2-A3B1-CD19A77DF997}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B19BF1C-B687-47A2-A3B1-CD19A77DF997}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B19BF1C-B687-47A2-A3B1-CD19A77DF997}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B19BF1C-B687-47A2-A3B1-CD19A77DF997}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
