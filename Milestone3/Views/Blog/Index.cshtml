@@ -61,25 +61,31 @@
             </article>
         }
     </section>
-}
 
-<form action="#" method="post">
-    <h3>Post a comment</h3>
-    <p>
-        <label for="name">Name</label>
-        <input name="name" id="name" type="text" required />
-    </p>
-    <p>
-        <label for="email">E-mail</label>
-        <input name="email" id="email" type="email" required />
-    </p>
-    <p>
-        <label for="website">Website</label>
-        <input name="website" id="website" type="url" />
-    </p>
-    <p>
-        <label for="comment">Comment</label>
-        <textarea name="comment" id="comment" required></textarea>
-    </p>
-    <p><input type="submit" value="Post comment" /></p>
-</form>
+    using (Html.BeginForm("CreateComment", "Blog", FormMethod.Post))
+    {
+        var comment = new Milestone3.Models.Comment();
+        comment.PostID = post.ID;
+
+        @Html.AntiForgeryToken();
+        @Html.HiddenFor(modelItem => comment.PostID);
+
+        <h3>Post a comment</h3>
+        <p>
+            @Html.LabelFor(modelItem => comment.AuthorName, "Name")
+            @Html.EditorFor(modelItem => comment.AuthorName)
+        </p><p>
+            @Html.LabelFor(modelItem => comment.AuthorWebsite, "Url")
+            @Html.EditorFor(modelItem => comment.AuthorWebsite)
+        </p>
+        <p>
+            @Html.LabelFor(modelItem => comment.Title)
+            @Html.EditorFor(modelItem => comment.Title)
+        </p>
+        <p>
+            @Html.LabelFor(modelItem => comment.Text)
+            @Html.EditorFor(modelItem => comment.Text)
+        </p>
+        <p><input type="submit" value="Post comment" /></p>
+        }
+    }

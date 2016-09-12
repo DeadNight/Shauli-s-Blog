@@ -24,6 +24,19 @@ namespace Milestone3.Controllers
             return View(posts.ToList());
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreateComment([Bind(Include = "PostID,Title,AuthorName,AuthorWebsite,Text")] Comment comment)
+        {
+            comment.PublishDate = DateTime.Now;
+            if (ModelState.IsValid)
+            {
+                db.Comments.Add(comment);
+                db.SaveChanges();
+            }
+            return RedirectToAction("Index");
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

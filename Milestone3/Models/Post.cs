@@ -23,20 +23,23 @@ namespace Milestone3.Models
         public string AuthorWebsite { get; set; }
         [Required]
         [DataType(DataType.DateTime)]
+        [Display(Name = "Publish Date")]
         public DateTime PublishDate { get; set; }
         [Required]
         [DataType(DataType.MultilineText)]
         public string Text { get; set; }
         [DataType(DataType.ImageUrl)]
+        [Display(Name = "Image Url")]
         public string ImageUrl { get; set; }
         [DataType(DataType.ImageUrl)]
+        [Display(Name = "Video Url")]
         public string VideoUrl { get; set; }
 
         public string FormattedPublishDate
         {
             get
             {
-                return PublishDate.ToString("MMMM ") + PublishDate.Day.ToOrdinalString() + PublishDate.ToString(" yyyy");
+                return PublishDate.ToString("MMMM ") + PublishDate.Day.ToOrdinalString() + PublishDate.ToString(" yyyy 'at' HH:mm");
             }
         }
 

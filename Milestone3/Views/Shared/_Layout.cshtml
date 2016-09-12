@@ -21,9 +21,10 @@
         <!-- Navigation -->
         <ul>
             <li class="selected">@Html.ActionLink("Blog", "Index", "Blog")</li>
-            <li><a href="#">@Html.ActionLink("About", "About", "Home")</a></li>
-            <li><a href="#">@Html.ActionLink("Fan Club", "Index", "Fans")</a></li>
-            <li><a href="#">@Html.ActionLink("Contact", "Contact", "Home")</a></li>
+            <li>@Html.ActionLink("Fan Club", "Index", "Fans")</li>
+            <li>@Html.ActionLink("About", "About", "Home")</li>
+            <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+            <li>@Html.ActionLink("Manage", "Index", "Posts")</li>
             <li class="subscribe"><a href="#"><img src="~/Content/images/rss.png" />Subscribe via. RSS</a></li>
         </ul>
     </nav>
