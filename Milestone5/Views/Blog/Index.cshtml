@@ -1,0 +1,91 @@
+﻿@model IEnumerable<Milestone5.Models.Post>
+
+@{
+    ViewBag.Title = "Shauli's Blog";
+    Culture = UICulture = "en-US";
+}
+
+@section AddToHead{
+    @Styles.Render("~/Content/style/blog.css")
+}
+
+@foreach(var post in Model)
+{
+    var textLength1 = post.Text.IndexOf('.', post.Text.Length / 4) + 1;
+    var textLength2 = post.Text.IndexOf('.', post.Text.Length * 3 / 4) + 1 - textLength1;
+    var textPart1 = post.Text.Substring(0, textLength1);
+    var textPart2 = post.Text.Substring(textLength1 + 1, textLength2);
+    var textPart3 = post.Text.Substring(textLength2 + 1);
+    <section>
+        <article class="blogPost">
+            <header>
+                <h2>@Html.DisplayFor(modelItem => post.Title)</h2>
+                <p>
+                    Posted on <time datetime="@(post.PublishDate.ToString("s") + post.PublishDate.ToString("zzz"))">@Html.DisplayFor(modelItem => post.FormattedPublishDate)</time>
+                    by <a href="@post.AuthorWebsite">@Html.DisplayFor(modelItem => post.AuthorName)</a>
+                    - <a href="#comments">@post.Comments.Count comments</a>
+</p>
+            </header>
+            <div>
+                <p>@textPart1</p>
+                @if (!string.IsNullOrWhiteSpace(post.ImageUrl))
+                {
+                    <img src="@post.ImageUrl" />
+                }
+                <p>@textPart2</p>
+                @if(!string.IsNullOrWhiteSpace(post.VideoUrl))
+                {
+                    <video controls>
+                        <source src="@post.VideoUrl" type="video/mp4" />
+                        Your browser does not support the video tag.
+                    </video>
+                }
+                <p>@textPart3</p>
+            </div>
+        </article>
+    </section>
+
+    <section id="comments">
+        <h3>Comments</h3>
+        @foreach(var comment in post.Comments)
+        {
+            <article>
+                <header>
+                    <h4>@comment.Title</h4>
+                    <p>
+                        <a href="@comment.AuthorWebsite">@comment.AuthorName</a>
+                        on <time datetime="@(comment.PublishDate.ToString("s") + comment.PublishDate.ToString("zzz"))">@Html.DisplayFor(modelItem => comment.FormattedPublishDate)</time>
+                    </p>
+                </header>
+                <p>@comment.Text</p>
+            </article>
+        }
+    </section>
+
+    using (Html.BeginForm("CreateComment", "Blog", FormMethod.Post))
+    {
+        var comment = new Milestone5.Models.Comment();
+        comment.PostID = post.ID;
+
+        @Html.AntiForgeryToken();
+        @Html.HiddenFor(modelItem => comment.PostID);
+
+        <h3>Post a comment</h3>
+        <p>
+            @Html.LabelFor(modelItem => comment.AuthorName, "Name")
+            @Html.EditorFor(modelItem => comment.AuthorName)
+        </p><p>
+            @Html.LabelFor(modelItem => comment.AuthorWebsite, "Url")
+            @Html.EditorFor(modelItem => comment.AuthorWebsite)
+        </p>
+        <p>
+            @Html.LabelFor(modelItem => comment.Title)
+            @Html.EditorFor(modelItem => comment.Title)
+        </p>
+        <p>
+            @Html.LabelFor(modelItem => comment.Text)
+            @Html.EditorFor(modelItem => comment.Text)
+        </p>
+        <p><input type="submit" value="Post comment" /></p>
+        }
+    }
