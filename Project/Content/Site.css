@@ -1,6 +1,16 @@
-﻿body {
+﻿@font-face {
+   font-family: externalFont;
+   src: url("/Content/fonts/sansation_light.woff");
+}
+
+body {
     padding-top: 50px;
     padding-bottom: 20px;
+    font: 13px/22px externalFont, Helvetica, Arial, sans-serif;
+}
+
+h1 {
+    text-shadow: 3px 3px #ddd;
 }
 
 /* Set padding to keep content from hitting the edges */
