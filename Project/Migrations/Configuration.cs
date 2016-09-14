@@ -1,4 +1,4 @@
-namespace ContosoUniversity.Migrations
+namespace Project.Migrations
 {
     using DAL;
     using Models;
@@ -8,7 +8,7 @@ namespace ContosoUniversity.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<SchoolContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<Project.DAL.SchoolContext>
     {
         public Configuration()
         {

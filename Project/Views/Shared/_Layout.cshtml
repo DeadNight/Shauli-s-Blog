@@ -1,0 +1,105 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Colman</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("College of Management", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("Students", "Index", "Student")</li>
+                    <li>@Html.ActionLink("Courses", "Index", "Course")</li>
+                    <li>@Html.ActionLink("Instructors", "Index", "Instructor")</li>
+                    <li>@Html.ActionLink("Departments", "Index", "Department")</li>
+                    <li class="subscribe navbar-right"><a href="#" class="navbar-link"><img src="~/Content/images/rss.png" /> Subscribe via. RSS</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container body-content">
+        <header class="jumbotron">
+            <h1>College of Management</h1>
+            <h2>Academic Studies</h2>
+        </header>
+
+        <div class="row">
+            <div class="col-md-9">
+                @RenderBody()
+            </div>
+            <div class="col-md-3">
+                <aside>
+                    <section>
+                        <header>
+                            <h3>Schools</h3>
+                        </header>
+                        <ul>
+                            <li><a href="#">Business</a></li>
+                            <li><a href="#">Law</a></li>
+                            <li><a href="#">Economics</a></li>
+                            <li><a href="#">Behavioral Sciences</a></li>
+                            <li><a href="#">Design and Innovation</a></li>
+                            <li><a href="#">Media Studies</a></li>
+                            <li><a href="#">Computer Science</a></li>
+                            <li><a href="#">Psychology</a></li>
+                        </ul>
+                    </section>
+                    <section>
+                        <header>
+                            <h3>Undergraduate Programs</h3>
+                        </header>
+                        <ul>
+                            <li><a href="#">BA Business and Management</a></li>
+                            <li><a href="#">BA Behavioral Sciences</a></li>
+                            <li><a href="#">LLB Law</a></li>
+                            <li><a href="#">Law BA</a></li>
+                            <li><a href="#">BA Psychology</a></li>
+                            <li><a href="#">BSc Computer Science</a></li>
+                            <li><a href="#">BA Economics and Management</a></li>
+                            <li><a href="#">Design Interior B.Design</a></li>
+                        </ul>
+                    </section>
+                    <section>
+                        <header>
+                            <h3>Graduate Programs</h3>
+                        </header>
+                        <ul>
+                            <li><a href="#">M.B.A in Business Administration</a></li>
+                            <li><a href="#">M.A. in Design, Innovation & Entrepreneurship</a></li>
+                            <li><a href="#">LL.M. in Law</a></li>
+                            <li><a href="#">M.A. in Applied Economics</a></li>
+                            <li><a href="#">M.A. Family Studies</a></li>
+                            <li><a href="#">M.A. in Consulting and Organizational Development</a></li>
+                            <li><a href="#">M.A. in Law for non-lawyers</a></li>
+                        </ul>
+                    </section>
+                </aside>
+            </div>
+        </div>
+
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - College of Management</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
