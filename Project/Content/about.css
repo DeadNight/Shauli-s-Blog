@@ -1,0 +1,14 @@
+﻿/*------------------------------
+=Student Budy Statistics
+------------------------------*/
+.studentBody .bar {
+        fill: steelblue;
+    }
+
+    .studentBody .bar:hover {
+        fill: brown;
+    }
+
+.studentBody .axis--x path {
+    display: none;
+}

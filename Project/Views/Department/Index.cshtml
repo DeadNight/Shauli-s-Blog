@@ -5,15 +5,20 @@
 }
 
 <h2>Departments</h2>
-
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+
+@using (Html.BeginForm("Index", "Department", FormMethod.Get))
+{
+    <p>
+        Find by name: @Html.TextBox("NameFilter", ViewBag.NameFilter as String)
+        <input type="submit" value="Search" />
+    </p>
+}
+
 <table class="table">
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Administrator.LastName)
-        </th>
         <th>
             @Html.DisplayNameFor(model => model.Name)
         </th>
@@ -31,9 +36,6 @@
 
 @foreach (var item in Model) {
     <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Administrator.LastName)
-        </td>
         <td>
             @Html.DisplayFor(modelItem => item.Name)
         </td>
@@ -55,3 +57,15 @@
 }
 
 </table>
+
+<hr />
+<h3>Organization chart</h3>
+<svg id="orgChart"></svg>
+
+@section styles{
+    @Styles.Render("~/Content/orgChart.css")
+}
+
+@section scripts{
+    @Scripts.Render("~/Scripts/renderOrgChart.js")
+}

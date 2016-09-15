@@ -1,30 +1,45 @@
-﻿@model IEnumerable<Project.ViewModels.EnrollmentDateGroup>
+﻿@section styles{
+    @Styles.Render("~/Content/about.css")
+}
+
+@section scripts{
+    @Scripts.Render("~/Scripts/renderStudentBodyChart.js")
+}
 
 @{
-    ViewBag.Title = "Student Budy Statistics";
+    ViewBag.Title = "About Us";
 }
 
 <h2>@ViewBag.Title</h2>
 
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.EnrollmentDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.StudentCount)
-        </th>
-    </tr>
+<article class="about">
+    <h3>Vision</h3>
+    <p>
+        "If you will it, it is no dream" - this famous quote of the State's visionary, Theodor Hertzl, was adopted not many tears later by Dov Yohannes, a Holocaust survivor, and led him to establish the College of Management Academic Studies.
+        Dov Yohannes, 1914-2014, founder and developer of the education network of the Clerical Union, which over the years became the Seminar of Management and later on the College of Management that is familiar to everyone today, was born in Krakov, Poland. Yohannes was a student and counselor in a youth movement, an activist in the Zionist underground during World War II, an immigration activist on behalf of the Jewish Agency (Sochnut), and a public activist on behalf of the Jewish association in Krakov. His rich history and diverse fields of study and activity explain the great importance Yohannes attributed to administration and education.
+        In his opinion, as an academic institution, the College should be involved in activities for society, to provide the student education and culture, to take actions for formulating the student's professional personality, and to introduce advanced education methods.
+        In an interview held in 2008, Yohannes addresses the establishment of a high education institution within a professional union framework: "I consider it as a one of a kind act that wouldn't have succeeded if not for the powerful idea, determination, connection with the Clerical Union that provided a supporting public framework, and contribution by the academic community and senior market and public administration executives"."
+    </p>
 
-    @foreach(var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.EnrollmentDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.StudentCount)
-            </td>
-        </tr>
-    }
-</table>
+    <h3>Establishing the Seminar</h3>
+    <p>
+        In the late 1950's and early 1960's, there was a change in the way of thinking and the approach to education's place in society. The conception that education is not a one-time defined process during a person's lifetime, but rather a process that lasts a lifetime with brief interruptions, was formulated during these years. During this process, the individual absorbs acquired knowledge along with creation and work. Furthermore, the development of science and technology followed by information overload accelerated the speed at which personal knowledge base becomes obsolete. Yesterday's innovations became obsolete overnight, and those who did not bother to stay up-to-date were left behind. These changes have also made an impact on the Israeli society and were evident in the training systems of administration and office workers. If until the early 1960's qualification was focused mainly on employee training at beginner and intermediate levels, from that time onwards, there was a recognized need to create training for senior levels. For this purpose, Yohannes initiated the Seminar of Management that was intended to provide response to the existing problem of senior ranks that experienced rapid knowledge obsolescence. Furthermore, the seminar was also established for handling professional conservatism: conflicts between conservative executives and employees that acquired new knowledge were constant in Israeli administration, and communication between senior executives and their subordinates could be improved by bringing the executives back to school.
+    </p>
+
+    <h3>Announcing the College of Management</h3>
+    <p>
+        Some of the students that attended the seminar were holding key market positions, and felt that they did not realize their intellectual abilities and therefore wished to expand their horizons with the seminar's professional studies, and pressured seminar managers to open an academic track that will grant its graduates an academic degree in their profession and field of expertise.
+        This field requirement was one of the main motivations for deciding to turn the seminar into the College of Management Academic Studies. The College of Management's character was formulated in light of its conception which combined professional qualification with high education and adjusted studies to the needs and possibilities of the working force.
+    </p>
+
+    <h3>The College is recognized as an institution of high education</h3>
+    <p>
+        In December 14, 1977, College executives were notified that the College passed the first stage and was granted a permit which recognizes it as an institution of high education. The decision was unanimously passed by all council members, and approved by the government. Following this decision, in November 1978, the College's executive management was invited to the offices of the Minister of Education, Zvulun Hamer, for a formal ceremony during which the College received the permit certificate.
+        The character and values established during the College’s foundation have been guiding it to this day. Furthermore, the College has always focused on social activism, making studies relevant and practical for the students and the entire market, an inter-disciplinary approach for developing new curriculums along with merging and integrating existing programs, and on financial balance that allows activity without subsidization.
+        The College continues to excel as a unique high-quality enterprise that aims at promoting Israel society. This enterprise is a source of pride, and its success was achieved thanks to institutions, executives and employees.
+    </p>
+</article>
+
+<hr />
+<h3>Student Budy Statistics</h3>
+<svg class="studentBody" width="800" height="500"></svg>

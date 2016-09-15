@@ -1,5 +1,4 @@
 ﻿using Project.DAL;
-using Project.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,23 +11,19 @@ namespace Project.Controllers
     {
         private SchoolContext db = new SchoolContext();
 
+        // GET Home/Index
         public ActionResult Index()
         {
             return View();
         }
 
+        // GET Home/About
         public ActionResult About()
         {
-            IQueryable<EnrollmentDateGroup> data = from student in db.Students
-                                                   group student by student.EnrollmentDate into dateGroup
-                                                   select new EnrollmentDateGroup()
-                                                   {
-                                                       EnrollmentDate = dateGroup.Key,
-                                                       StudentCount = dateGroup.Count()
-                                                   };
-            return View(data.ToList());
+            return View();
         }
 
+        // GET Home/Contact
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";

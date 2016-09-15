@@ -2,16 +2,57 @@
     ViewBag.Title = "Contact";
 }
 <h2>@ViewBag.Title</h2>
-<h3>@ViewBag.Message</h3>
 
 <address>
-    One Microsoft Way<br />
-    Redmond, WA 98052-6399<br />
+    Elie Wiesel St, Rishon LeTsiyon<br />
     <abbr title="Phone">P:</abbr>
-    425.555.0100
+    *5025
 </address>
 
 <address>
-    <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
-    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
+    <strong>Support:</strong>   <a href="mailto:Support@colman.ac.il">Support@colman.com</a><br />
+    <strong>Marketing:</strong> <a href="mailto:Marketing@colman.ac.il">Marketing@colman.com</a>
 </address>
+
+<hr />
+
+<h3>FAQ</h3>
+
+<article>
+    <header class="question">
+        <h4>How do I enroll for courses ?</h4>
+    </header>
+    <p class="answer">
+        The following tutorial will show you how to enroll to courses: <br />
+        <video controls style="max-width: 100%">
+            <source src="~/Content/rish.mp4" type="video/mp4" />
+            Sorry, your browser doesn't support HTML5 video.
+        </video>
+    </p>
+</article>
+
+<article>
+    <header class="question">
+        <h4>Can you draw a sheep ?</h4>
+    </header>
+    <p class="answer">
+        Why, yes: <br />
+        <canvas id="sheep" width="800" height="600"></canvas>
+    </p>
+</article>
+
+<article>
+    <header class="question">
+        <h4>Is it a good day to study ?</h4>
+    </header>
+    <p class="answer">
+        Check out the current weather at our campus: <br />
+        <span id="weatherDescription"></span> <br />
+        Temperature: <span id="weatherTemp"></span> &#8451; <br />
+        Humidity: <span id="weatherHumidity"></span> %
+    </p>
+</article>
+
+@section scripts{
+    @Scripts.Render("~/Scripts/drawSheep.js", "~/Scripts/fillWeather.js")
+}

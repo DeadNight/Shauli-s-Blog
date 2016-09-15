@@ -7,6 +7,8 @@ using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Web.Mvc;
+using System.Collections.Generic;
+using Project.ViewModels;
 
 namespace Project.Controllers
 {
@@ -181,6 +183,20 @@ namespace Project.Controllers
                 return RedirectToAction("Delete", new { id = id, saveChangesError = true });
             }
             return RedirectToAction("Index");
+        }
+
+        // GET Student/StudentBody
+        public ActionResult StudentBody()
+        {
+            IQueryable<EnrollmentDateGroup> data = from student in db.Students
+                                                   group student by student.EnrollmentDate.Year into yearGroup
+                                                   orderby yearGroup.Key
+                                                   select new EnrollmentDateGroup()
+                                                   {
+                                                       EnrollmentYear = yearGroup.Key,
+                                                       StudentCount = yearGroup.Count()
+                                                   };
+            return Json(data, JsonRequestBehavior.AllowGet);
         }
 
         protected override void Dispose(bool disposing)

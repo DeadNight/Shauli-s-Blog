@@ -1,4 +1,5 @@
 ﻿@model Project.ViewModels.InstructorIndexData
+@using Project.Models
 
 @{
     ViewBag.Title = "Instructors";
@@ -9,6 +10,27 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+
+@using (Html.BeginForm("Index", "Instructor", new { id = ViewBag.InstructorID, courseId = ViewBag.CourseID }, FormMethod.Get))
+{
+    <p>
+        Find by
+        name: @Html.TextBox("NameFilter", ViewBag.NameFilter as String)
+        office: @Html.TextBox("OfficeFilter", ViewBag.OfficeFilter as String)
+        course:
+        <select name="CourseFilter">
+            <option></option>
+            @foreach (Course course in ViewBag.AllCourses)
+            {
+                <option value="@course.CourseID" @(ViewBag.CourseFilter == course.CourseID ? "selected" : "")>
+                    @course.Title
+                </option>
+            }
+        </select>
+        <input type="submit" value="Search" />
+    </p>
+}
+
 <table class="table">
     <tr>
         <th>
@@ -60,7 +82,7 @@
             }
         </td>
         <td>
-            @Html.ActionLink("Select", "Index", new { id = item.ID }) |
+            @Html.ActionLink("Select", "Index", new { id = item.ID, nameFilter = ViewBag.NameFilter, officeFilter = ViewBag.OfficeFilter, courseFilter = ViewBag.CourseFilter }) |
             @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
             @Html.ActionLink("Details", "Details", new { id=item.ID }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.ID })
@@ -89,7 +111,7 @@
             }
             <tr class="@selectedRow">
                 <td>
-                    @Html.ActionLink("Select", "Index", new { courseId = item.CourseID })
+                    @Html.ActionLink("Select", "Index", new { courseId = item.CourseID, nameFilter = ViewBag.NameFilter, officeFilter = ViewBag.OfficeFilter, courseFilter = ViewBag.CourseFilter })
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.CourseID)

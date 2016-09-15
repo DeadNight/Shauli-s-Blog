@@ -9,7 +9,7 @@ namespace Project.ViewModels
     public class EnrollmentDateGroup
     {
         [DataType(DataType.Date)]
-        public DateTime? EnrollmentDate { get; set; }
+        public int? EnrollmentYear { get; set; }
 
         public int StudentCount { get; set; }
     }

@@ -15,25 +15,26 @@
 
 @media (min-width: 577px) {
     .blogPost div {
-        /* Column-count not implemented yet */
         -moz-column-count: 2;
         -webkit-column-count: 2;
-        /* Column-gap not implemented yet */
+        column-count: 2;
+        
         -moz-column-gap: 22px;
         -webkit-column-gap: 22px;
+        column-gap: 22px;
     }
 }
 
 .blogPost img {
 	margin: 22px 0;
-	-webkit-box-shadow: 3px 3px 7px #777;
+    box-shadow: 3px 3px 7px #777;
 }
 
 .blogPost video {
 	margin: 12px 0;
 	width: 100%;
 	height: auto;
-	-webkit-box-shadow: 3px 3px 7px #777;
+    box-shadow: 3px 3px 7px #777;
 }
 
 /*------------------------------
@@ -62,8 +63,7 @@
 		padding: 21px;
 		background: #E3E3E3;
 		border: 1px solid #d7d7d7;
-		-moz-border-radius: 11px;
-		-webkit-border-radius: 11px;
+		border-radius: 11px;
 	}
 	
 		#comments article header {

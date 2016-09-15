@@ -9,6 +9,15 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+
+@using (Html.BeginForm("Index", "Course", FormMethod.Get))
+{
+    <p>
+        Find by name: @Html.TextBox("NameFilter", ViewBag.NameFilter as String)
+        <input type="submit" value="Search" />
+    </p>
+}
+
 <table class="table">
     <tr>
         <th>

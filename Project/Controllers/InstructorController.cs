@@ -18,31 +18,61 @@ namespace Project.Controllers
         private SchoolContext db = new SchoolContext();
 
         // GET: Instructor
-        public ActionResult Index(int? id, int? courseID)
+        public ActionResult Index(int? id, int? courseID, string nameFilter, string officeFilter, int? courseFilter)
         {
             var viewModel = new InstructorIndexData();
-            viewModel.Instructors = db.Instructors
-                .Include(i => i.OfficeAssignment)
-                .Include(i => i.Courses.Select(c => c.Department))
-                .OrderBy(i => i.LastName);
-            if(id != null)
+            var instructors = db.Instructors
+                                  .Include(i => i.OfficeAssignment)
+                                  .Include(i => i.Courses.Select(c => c.Department));
+
+            if(!string.IsNullOrWhiteSpace(nameFilter))
             {
+                ViewBag.NameFilter = nameFilter;
+                instructors = instructors
+                    .Where(i => i.FirstMidName.ToUpper().Contains(nameFilter.ToUpper())
+                             || i.LastName.ToUpper().Contains(nameFilter.ToUpper()));
+            }
+
+            if(!string.IsNullOrWhiteSpace(officeFilter))
+            {
+                ViewBag.OfficeFilter = officeFilter;
+                instructors = instructors.Where(i => i.OfficeAssignment.Location.ToUpper().Contains(officeFilter.ToUpper()));
+            }
+
+            if(courseFilter != null)
+            {
+                ViewBag.CourseFilter = courseFilter;
+                instructors = instructors.Where(i => courseFilter == null ? true : 1 == i.Courses.Count(c => c.CourseID == courseFilter));
+            }
+
+            viewModel.Instructors = instructors.OrderBy(i => i.LastName);
+            ViewBag.AllCourses = db.Courses.OrderBy(c => c.Title).ToList();
+
+            if (id != null)
+            {
+                var instructor = viewModel.Instructors.Where(i => i.ID == id.Value).SingleOrDefault();
+                if (instructor == null)
+                {
+                    id = null;
+                    return RedirectToAction("Index", new { id, nameFilter, officeFilter, courseFilter });
+                }
                 ViewBag.InstructorID = id.Value;
                 viewModel.Courses = viewModel.Instructors.Where(i => i.ID == id.Value).Single().Courses;
+
             }
             if(courseID != null)
             {
                 ViewBag.CourseID = courseID.Value;
                 // Lazy loading
-                //viewModel.Enrollments = viewModel.Courses.Where(c => c.CourseID == courseID).Single().Enrollments;
+                viewModel.Enrollments = viewModel.Courses.Where(c => c.CourseID == courseID).Single().Enrollments;
                 // Explicit loading
-                var selectedCourse = viewModel.Courses.Where(c => c.CourseID == courseID).Single();
-                db.Entry(selectedCourse).Collection(c => c.Enrollments).Load();
-                foreach(Enrollment enrollment in selectedCourse.Enrollments)
-                {
-                    db.Entry(enrollment).Reference(e => e.Student).Load();
-                }
-                viewModel.Enrollments = selectedCourse.Enrollments;
+                //var selectedCourse = viewModel.Courses.Where(c => c.CourseID == courseID).Single();
+                //db.Entry(selectedCourse).Collection(c => c.Enrollments).Load();
+                //foreach(Enrollment enrollment in selectedCourse.Enrollments)
+                //{
+                //    db.Entry(enrollment).Reference(e => e.Student).Load();
+                //}
+                //viewModel.Enrollments = selectedCourse.Enrollments;
             }
             return View(viewModel);
         }

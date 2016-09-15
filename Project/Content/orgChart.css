@@ -1,0 +1,34 @@
+﻿.node:hover {
+    cursor: pointer;
+}
+
+.node:hover circle {
+    fill: #ee3333;
+}
+
+.node circle {
+  fill: #fff;
+  stroke: steelblue;
+  stroke-width: 1.5px;
+}
+
+.node text {
+  font: 10px sans-serif;
+  text-shadow: 0 1px 0 #fff, 0 -1px 0 #fff, 1px 0 0 #fff, -1px 0 0 #fff;
+}
+
+.link {
+  fill: none;
+  stroke: #ccc;
+  stroke-opacity: 0.4;
+  stroke-width: 1.5px;
+}
+
+.back {
+    display: none;
+    cursor: pointer;
+}
+
+.slider {
+    display: none;
+}

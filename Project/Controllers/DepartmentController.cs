@@ -9,6 +9,7 @@ using System.Web;
 using System.Web.Mvc;
 using Project.DAL;
 using Project.Models;
+using Project.ViewModels;
 
 namespace Project.Controllers
 {
@@ -17,9 +18,16 @@ namespace Project.Controllers
         private SchoolContext db = new SchoolContext();
 
         // GET: Department
-        public async Task<ActionResult> Index()
+        public async Task<ActionResult> Index(string nameFilter)
         {
             var departments = db.Departments.Include(d => d.Administrator);
+
+            if (!string.IsNullOrWhiteSpace(nameFilter))
+            {
+                ViewBag.NameFilter = nameFilter;
+                departments = departments.Where(d => d.Name.ToUpper().Contains(nameFilter.ToUpper()));
+            }
+
             return View(await departments.ToListAsync());
         }
 
@@ -120,6 +128,30 @@ namespace Project.Controllers
             db.Departments.Remove(department);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
+        }
+
+        // GET Department/Organization
+        public ActionResult Organization()
+        {
+            var orgData = new OrganizationData
+            {
+                name = "Colman",
+                children = db.Departments
+                .Select(d => new DepartmentOrgData
+                {
+                    name = d.Name,
+                    children = d.Courses.Select(c => new CourseOrgData
+                    {
+                        name = c.Title,
+                        children = c.Instructors.Select(i => new InstructorOrgData
+                        {
+                            name = i.LastName + ", " + i.FirstMidName
+                        }).ToList()
+                    }).ToList()
+                }).ToList()
+            };
+
+            return Json(orgData, JsonRequestBehavior.AllowGet);
         }
 
         protected override void Dispose(bool disposing)

@@ -1,12 +1,18 @@
 ﻿@font-face {
    font-family: externalFont;
-   src: url("/Content/fonts/sansation_light.woff");
+   src: url("missing.eot?#iefix") format('embedded-opentype'),
+        url("/Content/fonts/sansation_light.woff") format("woff");
 }
 
 body {
     padding-top: 50px;
     padding-bottom: 20px;
     font: 13px/22px externalFont, Helvetica, Arial, sans-serif;
+}
+
+.body-content > header {
+    margin-bottom: 0;
+    background: linear-gradient(to bottom, rgb(238, 238, 238), rgba(238, 238, 238, 0));
 }
 
 h1 {
@@ -45,17 +51,18 @@ nav li.subscribe img {
     transition: all 2s ease-in-out;
 }
 
-nav li.subscribe:hover img {
-    background: none;
-    transform: rotate(720deg) scale(2,2);
-}
+    nav li.subscribe:hover img {
+        background: none;
+        transform: rotate(720deg) scale(2,2);
+    }
 
 /*------------------------------
 =CONTENT AREA AND SIDEBAR LAYOUT
 ------------------------------*/
 
 aside {
-	background: linear-gradient(to right, rgb(215, 215, 215), rgba(240, 240, 240, 1));
+    border-radius: 11px;
+	background: linear-gradient(to right, rgb(215, 215, 215), rgba(240, 240, 240, 0));
 }
 
 /*------------------------------
@@ -68,9 +75,9 @@ aside section {
     border-radius: 11px;
 }
 
-aside section:first-child {
-    margin-top: 0;
-}
+    aside section:first-child {
+        margin-top: 0;
+    }
 
 aside section ul {
     list-style: square;
@@ -82,6 +89,21 @@ aside section ul li a {
     color: #000;
 }
 
-aside section ul li a:hover {
-    text-decoration: underline;
+    aside section ul li a:hover {
+        text-decoration: underline;
+    }
+
+/*------------------------------
+=SIDEBAR
+------------------------------*/
+.about {
+    margin: 20px 0;
+
+    -moz-column-count: 2;
+    -webkit-column-count: 2;
+    column-count: 2;
+
+    -moz-column-gap: 25px;
+    -webkit-column-gap: 25px;
+    column-gap: 25px;
 }

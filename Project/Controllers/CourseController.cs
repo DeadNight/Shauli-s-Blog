@@ -17,9 +17,16 @@ namespace Project.Controllers
         private SchoolContext db = new SchoolContext();
 
         // GET: Course
-        public ActionResult Index()
+        public ActionResult Index(string nameFilter)
         {
             var courses = db.Courses.Include(c => c.Department);
+
+            if (!string.IsNullOrWhiteSpace(nameFilter))
+            {
+                ViewBag.NameFilter = nameFilter;
+                courses = courses.Where(i => i.Title.ToUpper().Contains(nameFilter.ToUpper()));
+            }
+
             return View(courses.ToList());
         }
 
